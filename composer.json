@@ -1,0 +1,21 @@
+{
+    "name": "alexgoldovsky/page-grabber",
+    "type": "library",
+    "require": {
+        "php": ">=5.3.10,<7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "authors": [
+        {
+            "name": "Alex Goldovsky",
+            "email": "seny44@gmail.com"
+        }
+    ],
+    "autoload": {
+	"psr-4": {
+		"AlexGoldovsky\\PageGrabber\\": "./src"
+	}
+    }
+}
