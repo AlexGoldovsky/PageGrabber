@@ -16,7 +16,7 @@
     ],
     "autoload": {
 	"psr-4": {
-		"PageGrabber\\": "./src"
+		"PageGrabber\\": "./src/PageGrabber.php"
 	}
     }
 }
