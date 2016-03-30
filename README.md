@@ -22,16 +22,17 @@ require 'vendor/autoload.php';
 
 Here is a simple example:
 '''
-$grabber = new \PageGraber\PageGrabber("https://blazemeter.com");
+```
+$grabber = new PageGraber\PageGrabber("https://blazemeter.com");
 $title = $grabber->getTitle();
 echo $title;
+```
 '''
 Output:
 '''
 `JMeter, Load & Continuous Performance Testing Platform`
 '''
 ## Left To-do
-- Varify functionality of php built in functions used for url parsing and validation.
-- Handle uncaught exceptions that might be thrown by Guzzle
+- Varify functionality of php built in functions used for url parsing and validation
 - Handle possible errors that might be caused by DomDocument
 - Allow calling new PageGrabber($url) directly
