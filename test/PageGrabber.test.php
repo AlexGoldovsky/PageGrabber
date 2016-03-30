@@ -28,9 +28,12 @@ class PageGrabberTest extends \PHPUnit_Framework_TestCase {
 		or you may want to add a custom url in the /etc/hosts file, and then remove the mark
 	*/
 	public function testValidUrlNoTitleTag () {
-		$grabber = new PageGrabber("http://notitletag.com");
-		$title = $grabber->getTitle();
-		$this->assertEquals($title, "");
+		$this->markTestSkipped(
+              'Test Web page without title tag.'
+		);
+		//$grabber = new PageGrabber("http://notitletag.com");
+		//$title = $grabber->getTitle();
+		//$this->assertEquals($title, "");
 	}
 
 	public function testTitleIsCorrect() {
