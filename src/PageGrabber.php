@@ -31,7 +31,7 @@ class PageGrabber {
 	}
 	
 	private function extractDataByTag($tag) {
-		$doc = new DOMDocument('1.0', 'UTF-8');
+		$doc = new \DOMDocument();
 		@$doc->loadHTML($this->pageHtml);
 		return $nodes = $doc->getElementsByTagName($tag);
 	}
