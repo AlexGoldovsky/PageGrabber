@@ -1,5 +1,5 @@
 <?php namespace PageGrabber\Exception;
 
-class UrlException extends Exception {}
+class UrlException extends \Exception {}
 
 ?>
