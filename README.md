@@ -21,17 +21,15 @@ require 'vendor/autoload.php';
 ## Basic usage
 
 Here is a simple example:
-'''
 ```
 $grabber = new PageGraber\PageGrabber("https://blazemeter.com");
 $title = $grabber->getTitle();
 echo $title;
 ```
-'''
 Output:
-'''
-`JMeter, Load & Continuous Performance Testing Platform`
-'''
+```
+JMeter, Load & Continuous Performance Testing Platform
+```
 ## Left To-do
 - Varify functionality of php built in functions used for url parsing and validation
 - Handle possible errors that might be caused by DomDocument
