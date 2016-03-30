@@ -3,10 +3,9 @@
 class PageGrabberTest extends \PHPUnit_Framework_TestCase {
 
 public function testConstructor () {
-	$grabber = new PageGrabber("what");
+	$grabber = new PageGrabber("http://facebook.com");
 	//$this->assertInstanceOf("AlexGoldovsky\PageGrabber", $grabber);
 	$title = $grabber->getTitle();
-	$this->assertEquals("hello", $title);
-	echo "title = ".$title;
+	//echo $title;
 }
 }#
