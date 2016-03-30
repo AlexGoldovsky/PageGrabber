@@ -38,14 +38,16 @@ class PageGrabber {
 		try {
 			$client = new Client([
 				'base_url'=>$this->url
-                        ]);
-                        $request = new Request('GET', $this->url);
-                        $response = $client->send($request, ['timeout'=>10]);
-                        $result = $response->getBody();
-                        $this->pageHtml = $result;
-                } catch(ConnectException $e) {
-                        throw new UrlException("Error: Couldn't establish Connection to ". $this->url);
-                }
+            ]);
+			$request = new Request('GET', $this->url);
+			$response = $client->send($request, ['timeout'=>10]);
+			$result = $response->getBody();
+			$this->pageHtml = $result;
+		} catch(ConnectException $e) {
+			throw new UrlException("Error: Couldn't establish Connection to ". $this->url);
+		} catch (\Exception $e) {
+			throw new \Exception("Unhandled error by Guzzle: ".$e->getMessage());
+		}
 	}
 
 }#
