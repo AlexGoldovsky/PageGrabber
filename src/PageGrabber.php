@@ -24,13 +24,21 @@ class PageGrabber {
 
 	public function getTitle() {
 		$titleNode = $this->extractDataByTag("title");
-		$title = $titleNode->item(0)->nodeValue;
+		if ($titleNode->length > 0) {
+			$title = $titleNode->item(0)->nodeValue;
+		} else {
+			$title ="";
+		}
 		return $title;
 	}
 
 	private function extractDataByTag($tag) {
 		$doc = new \DOMDocument();
-		@$doc->loadHTML($this->pageHtml);
+		try {
+			@$doc->loadHTML($this->pageHtml);
+		} catch (\Exception $e) {
+			throw new UrlException("Error: Couldn't load html.");
+		}
 		return $nodes = $doc->getElementsByTagName($tag);
 	}
 
