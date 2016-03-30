@@ -9,12 +9,18 @@ class PageGrabberTest extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('\PageGrabber\PageGrabber', $grabber);
 	}
 
+	/**
+	 * @expectedException \PageGrabber\Exception\UrlException
+	 */
 	public function testConstractorWithInvalidUrlThrowsUrlException () {
-		try {
-			$grabber = new PageGrabber("avs");
-		} catch (UrlException $e) {
-			$this->assertInstanceOf('\PageGrabber\Exception\UrlException', $e);
-		}
+		$grabber = new PageGrabber("avs");
+	}
+
+	/**
+	 * @expectedException \PageGrabber\Exception\UrlException
+	 */
+	public function testValidUrlButSiteDoesntExsitThrowsUrlException () {
+		$grabber = new PageGrabber("http://blalfsdkfjbn.com/");
 	}
 
 	public function testTitleIsCorrect() {

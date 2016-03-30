@@ -1,9 +1,10 @@
 <?php namespace PageGrabber;
 
 require 'vendor/autoload.php';
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception;
+use GuzzleHttp\Exception\ConnectException;
 use PageGrabber\Exception\UrlException;
 
 class PageGrabber {
@@ -42,8 +43,8 @@ class PageGrabber {
                         $response = $client->send($request, ['timeout'=>10]);
                         $result = $response->getBody();
                         $this->pageHtml = $result;
-                } catch(Exception $e) {
-                        echo "Error in Guzzle: " . $e->getMessage();
+                } catch(ConnectException $e) {
+                        throw new UrlException("Error: Couldn't establish Connection to ". $this->url);
                 }
 	}
 
