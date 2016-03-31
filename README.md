@@ -12,17 +12,16 @@ Next, run the Composer command to install PageGrabber:
 ```
 composer require alexgoldovsky/page-grabber
 ```
-After installing.
-inside your php file, you need to require Composer's autoloader:
-```
-require 'vendor/autoload.php';
-```
 
-## Basic usage
+## Usage
 
 Here is a simple example:
 ```
-$grabber = new PageGraber\PageGrabber("https://blazemeter.com");
+<?php
+require 'vendor/autoload.php';
+use PageGrabber\PageGrabber;
+
+$grabber = new PageGrabber("https://blazemeter.com");
 $title = $grabber->getTitle();
 echo $title;
 ```
@@ -30,7 +29,6 @@ Output:
 ```
 JMeter, Load & Continuous Performance Testing Platform
 ```
-## Left To-do
-- Varify functionality of php built in functions used for url parsing and validation
-- Handle possible errors that might be caused by DomDocument
-- Allow calling new PageGrabber($url) directly
+
+## notes
+1. PageGrabber validates input value as URL according to [RFC 2396] (http://www.faqs.org/rfcs/rfc2396.html)
