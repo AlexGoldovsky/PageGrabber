@@ -16,7 +16,14 @@ class PageGrabber {
 
 		if (filter_var($url, FILTER_VALIDATE_URL)) {
 			$this->url = $url;
-			$this->getPageData();
+			$html = $this->getPageData();
+		    try {
+				$doc = new \DOMDocument();
+            	@$doc->loadHTML($html);
+				$this->pageHtml = $doc;
+        	} catch (\Exception $e) {
+            	throw new UrlException("Error: Couldn't load html.");
+        	}
 		} else {
 			throw new UrlException("Error: Input must be URL");
 		}
@@ -33,13 +40,7 @@ class PageGrabber {
 	}
 
 	private function extractDataByTag($tag) {
-		$doc = new \DOMDocument();
-		try {
-			@$doc->loadHTML($this->pageHtml);
-		} catch (\Exception $e) {
-			throw new UrlException("Error: Couldn't load html.");
-		}
-		return $nodes = $doc->getElementsByTagName($tag);
+		return $this->pageHtml->getElementsByTagName($tag);
 	}
 
 	private function getPageData(){
@@ -50,7 +51,7 @@ class PageGrabber {
 			$request = new Request('GET', $this->url);
 			$response = $client->send($request, ['timeout'=>10]);
 			$result = $response->getBody();
-			$this->pageHtml = $result;
+			return $result;
 		} catch(ConnectException $e) {
 			throw new UrlException("Error: Couldn't establish Connection to ". $this->url);
 		} catch (\Exception $e) {
