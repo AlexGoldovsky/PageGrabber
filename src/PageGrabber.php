@@ -17,12 +17,12 @@ class PageGrabber {
 		if (filter_var($url, FILTER_VALIDATE_URL)) {
 			$this->url = $url;
 			$html = $this->getPageData();
-		    try {
+			try {
 				$doc = new \DOMDocument();
-            	@$doc->loadHTML($html);
+				@$doc->loadHTML($html);
 				$this->pageHtml = $doc;
         	} catch (\Exception $e) {
-            	throw new UrlException("Error: Couldn't load html.");
+				throw new UrlException("Error: Couldn't load html.");
         	}
 		} else {
 			throw new UrlException("Error: Input must be URL");
@@ -47,7 +47,7 @@ class PageGrabber {
 		try {
 			$client = new Client([
 				'base_url'=>$this->url
-            ]);
+			]);
 			$request = new Request('GET', $this->url);
 			$response = $client->send($request, ['timeout'=>10]);
 			$result = $response->getBody();
