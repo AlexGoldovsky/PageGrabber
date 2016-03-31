@@ -1,6 +1,7 @@
-<?php namespace PageGrabber;
+<?php namespace PageGrabber\Test;
 
 use PageGrabber\Exception\UrlException;
+use PageGrabber\PageGrabber;
 
 class PageGrabberTest extends \PHPUnit_Framework_TestCase {
 

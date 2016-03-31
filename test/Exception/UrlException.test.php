@@ -1,4 +1,4 @@
-<?php 
+<?php namespace PageGrabber\Test\Exception; 
 use PageGrabber\Exception\UrlException;
 
 class UrlExceptionTest extends \PHPUnit_Framework_TestCase {
@@ -8,7 +8,7 @@ class UrlExceptionTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	  * @expectedException     \PageGrabber\Exception\UrlException
-          */
+      */
 	public function testUrlExceptionThrown() {
 		throw new UrlException();
 	}

@@ -16,10 +16,15 @@
     ],
     "autoload": {
 		"psr-4": {
-			"PageGrabber\\": "./src"
+			"PageGrabber\\": "./src/"
 		},
 		"psr-0": {
-			"": "./src"
+			"": "./src/"
 		}
-	}
+	},
+	"autoload-dev": {
+        "psr-4": {
+            "PageGrabber\\Test\\": "./test/"
+        }
+    }
 }
